@@ -6,7 +6,7 @@ I use Joplin as my note taking app and I found it frustrating to have to go thro
 
 ### What does it do?
 
-Joplin saves images with a random name, this script will parse the exported markdown file and rename them to your spefications.
+Joplin saves images with a random name, this script will parse the exported markdown file and rename them to your spefications (in a new file called new.md).
 
 Example before:
 
