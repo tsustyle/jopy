@@ -20,10 +20,10 @@ def write_new_file():
     for i in link_list:
         for line in file_input:
             if line.strip().endswith('.png)'):
-                file_output.write('\n' + i)
+                file_output.write('\n' + i + '\n')
                 break
             else:
-                file_output.write('\n' + line)
+                file_output.write(line)
 
 #renames the image files and creats a list of links
 def rename_png_and_make_link_list():
