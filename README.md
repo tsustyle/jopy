@@ -30,4 +30,4 @@ It takes three arguements:
 
 ### Usage example
 
-`python3 jopy.py /home/user/exported hackthebox doctor`
+`python3 jopy.py /home/user/exported/ hackthebox doctor`
