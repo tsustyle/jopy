@@ -14,7 +14,7 @@ Example before:
 
 Example after:
 
-![after](/image/after.png)
+![after](/images/after.png)
 
 
 ### If you found this...
