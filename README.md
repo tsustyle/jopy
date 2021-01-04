@@ -10,11 +10,11 @@ Joplin saves images with a random name, this script will parse the exported mark
 
 Example before:
 
-[before](/images/before.png)
+![before](/images/before.png)
 
 Example after:
 
-[after](/image/after.png)
+![after](/image/after.png)
 
 
 ### If you found this...
