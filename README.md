@@ -31,3 +31,11 @@ It takes three arguements:
 ### Usage example
 
 `python3 jopy.py /home/user/exported/ hackthebox doctor`
+
+### Todo
+
+- Name the new markdown file: YEAR-MONTH-DAY-NAME.md to follow Jekyll blog specs. *Currently names the file 'new.md'*
+- Full GitHub integration for automatic staging and pushing after formatting
+
+
+
