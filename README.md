@@ -6,7 +6,7 @@ I use Joplin as my note taking app and I found it frustrating to have to go thro
 
 ### What does it do?
 
-Joplin saves images with a random name, this script will parse the exported markdown file and rename them to your spefications (in a new file called new.md).
+Joplin saves images with a random name, this script will parse the exported markdown file and rename them to your specifications (in a new file called new.md).
 
 Example before:
 
@@ -30,4 +30,12 @@ It takes three arguements:
 
 ### Usage example
 
-`python3 jopy.py /home/user/exported hackthebox doctor`
+`python3 jopy.py /home/user/exported/ hackthebox doctor`
+
+### Todo
+
+- Name the new markdown file: `YEAR-MONTH-DAY-NAME.md` to follow Jekyll blog specs. *Currently names the file 'new.md'*
+- Full GitHub integration for automatic staging and pushing after formatting
+
+
+
