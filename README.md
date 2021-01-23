@@ -16,6 +16,12 @@ Example after:
 
 ![after](/images/after.png)
 
+### Full list of features
+- Parses the document to match your filesystem
+- Renames each screenshot in relation to where it is in the document (0 - first | 1 - second... etc)
+- Saves the document as YEAR-MONTH-DAY-NAME.md for easy Jekyll Blog integration
+- Renames the screenshots folder to match the 'document' name
+
 
 ### If you found this...
 
