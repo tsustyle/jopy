@@ -34,7 +34,6 @@ It takes three arguements:
 
 ### Todo
 
-- Name the new markdown file: `YEAR-MONTH-DAY-NAME.md` to follow Jekyll blog specs. *Currently names the file 'new.md'*
 - Full GitHub integration for automatic staging and pushing after formatting
 
 
