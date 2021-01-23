@@ -1,6 +1,7 @@
 import re
 import sys
 import os
+from datetime import date
 
 
 path, platform, name = sys.argv[1], sys.argv[2], sys.argv[3]
@@ -10,11 +11,12 @@ markdown_path = path + markdown_file[0]
 images_directory = path + '_resources/'
 
 git_path = '![img](/assets/images/' + platform + '/' + name + '/'
+todays_date = date.today().strftime("%Y-%m-%d")
 
 # writes the new file with correct links
 def write_new_file():
     file_input = open(markdown_path, "rt")
-    file_output = open(path + 'new.md', 'wt')
+    file_output = open(path + f'{todays_date}-{name}.md', 'wt')
     link_list = rename_png_and_make_link_list()
 
     for i in link_list:
