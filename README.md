@@ -31,7 +31,7 @@ I don't imagine many people stumbling across this, but if you do and you want to
 ### How do I use it?
 
 It takes three arguements:
-1. path to the folder where your exported markdown file resides
+1. path to your exports folder
 2. platform (name of images subfolder (/images/subfolder))
 3. name (name of images subfolder's subfolders (/images/subfolder/subfolder) dude idk, I set this up so it would work for me lol)
 
