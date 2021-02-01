@@ -4,7 +4,6 @@ from datetime import date
 try:
     path, platform, name = sys.argv[1], sys.argv[2], sys.argv[3]
 
-
     # Cleaning up the export because Joplin likes to export all of the parent notebooks
     md_file = glob.glob(path + "/**/*.md", recursive=True)
     shutil.move(md_file[0], path + 'file.md')
@@ -12,7 +11,6 @@ try:
     files = os.listdir(path)
 
     try:
-
         for i in files:
             if i.endswith('.md') or i == '_resources':
                 pass
@@ -20,7 +18,6 @@ try:
                 os.remove(i)
     except:
         print(f"\n[!] Couldn't remove {i}! Skipping cleanup. [!]")
-
 
     markdown_path = path + 'file.md'
     images_directory = path + '_resources/'
@@ -46,7 +43,7 @@ try:
         file_output.close()
         os.remove(markdown_path)
 
-    #renames the image files and creats a list of links
+    #renames the image files and creates a list of links
     def rename_png_and_make_link_list():
         with open(markdown_path, 'r') as f:
             x = f.read()
