@@ -1,53 +1,68 @@
-import re
-import sys
-import os
+import re, sys, os, shutil, glob
 from datetime import date
 
+try:
+    path, platform, name = sys.argv[1], sys.argv[2], sys.argv[3]
 
-path, platform, name = sys.argv[1], sys.argv[2], sys.argv[3]
-files = os.listdir(path)
-markdown_file = [i for i in files if i.endswith('.md')]
-markdown_path = path + markdown_file[0]
-images_directory = path + '_resources/'
 
-git_path = '![img](/assets/images/' + platform + '/' + name + '/'
-todays_date = date.today().strftime("%Y-%m-%d")
+    # Cleaning up the export because Joplin likes to export all of the parent notebooks
+    md_file = glob.glob(path + "/**/*.md", recursive=True)
+    shutil.move(md_file[0], path + 'file.md')
 
-# writes the new file with correct links
-def write_new_file():
-    file_input = open(markdown_path, "rt")
-    file_output = open(path + f'{todays_date}-{name}.md', 'wt')
-    link_list = rename_png_and_make_link_list()
+    files = os.listdir(path)
 
-    for i in link_list:
-        for line in file_input:
-            if line.strip().endswith('.png)'):
-                file_output.write('\n' + i + '\n')
-                break
+    try:
+
+        for i in files:
+            if i.endswith('.md') or i == '_resources':
+                pass
             else:
-                file_output.write(line)
+                os.remove(i)
+    except:
+        print(f"\n[!] Couldn't remove {i}! Skipping cleanup. [!]")
 
-#renames the image files and creats a list of links
-def rename_png_and_make_link_list():
-    with open(markdown_path, 'r') as f:
-        x = f.read()
-        filenames = re.findall("\((.*)\)", x)
-        filenames = [i.replace("../", "").replace("_resources/", "") for i in filenames if i.endswith('.png')]
 
-    link_list = []
-    num = 0
+    markdown_path = path + 'file.md'
+    images_directory = path + '_resources/'
 
-    for i in filenames:
-        os.rename(images_directory +i, images_directory + str(num) + '.png')
-        link_list.append(git_path + str(num) + '.png)')
-        num += 1
+    git_path = '![img](/assets/images/' + platform + '/' + name + '/'
+    todays_date = date.today().strftime("%Y-%m-%d")
 
-    os.rename(images_directory, path + name)
-    return link_list
+    # writes the new file with correct links
+    def write_new_file():
+        file_input = open(markdown_path, "rt")
+        file_output = open(path + f'{todays_date}-{name}.md', 'wt')
+        link_list = rename_png_and_make_link_list()
 
-#make sure the directory is clean
-if len(markdown_file) > 1:
-    print('Too many markdown files present in directory. Exiting.')
-else:
+        for i in link_list:
+            for line in file_input:
+                if line.strip().endswith('.png)'):
+                    file_output.write('\n' + i + '\n')
+                    break
+                else:
+                    file_output.write(line)
+
+        file_input.close()
+        file_output.close()
+        os.remove(markdown_path)
+
+    #renames the image files and creats a list of links
+    def rename_png_and_make_link_list():
+        with open(markdown_path, 'r') as f:
+            x = f.read()
+            filenames = re.findall("\((.*)\)", x)
+            filenames = [i.replace("../", "").replace("_resources/", "") for i in filenames if i.endswith('.png')]
+
+        link_list = []
+
+        for index, i in enumerate(filenames):
+            os.rename(images_directory +i, images_directory + str(index) + '.png')
+            link_list.append(git_path + str(index) + '.png)')
+
+        os.rename(images_directory, path + name)
+        return link_list
+
     write_new_file()
-
+    print('[+] Done! [+]\n')
+except:
+    print('\n[!] Usage: python3 jopy.py /path/to/export/folder category name [!]\n')
