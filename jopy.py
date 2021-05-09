@@ -35,7 +35,6 @@ try:
             for line in file_input:
                 if line.strip().endswith('.png)'):
                     file_output.write('\n' + i + '\n')
-                    break
                 else:
                     file_output.write(line)
 
