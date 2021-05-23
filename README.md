@@ -32,8 +32,8 @@ I don't imagine many people stumbling across this, but if you do and you want to
 
 It takes three arguments:
 1. path to your exports folder
-2. platform (name of images subfolder (/images/subfolder))
-3. name (name of images subfolder's subfolders (/images/subfolder/subfolder) dude idk, I set this up so it would work for me lol)
+2. platform (name of images subdirectory (/images/subdirectory))
+3. name (name of images subdirectory's subdirectory (/images/subdirectory/subdirectory))
 
 ### Usage example
 
@@ -41,7 +41,8 @@ It takes three arguments:
 
 ### Todo
 
-- Full GitHub integration for automatic staging and pushing after formatting
+- Switch from `sys.argv[]` to `argparse`
+- GitHub integration for automatic staging and pushing after formatting
 
 
 
